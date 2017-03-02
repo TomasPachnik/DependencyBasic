@@ -18,6 +18,26 @@ public class RoleInput {
         this.level = level;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RoleInput roleInput = (RoleInput) o;
+
+        if (level != roleInput.level) return false;
+        if (name != null ? !name.equals(roleInput.name) : roleInput.name != null) return false;
+        return description != null ? description.equals(roleInput.description) : roleInput.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + level;
+        return result;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,5 +60,14 @@ public class RoleInput {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleInput{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", level=" + level +
+                '}';
     }
 }
