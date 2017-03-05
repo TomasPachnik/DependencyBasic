@@ -11,17 +11,15 @@ public class ExcerciseInput {
     private int level;
     private int series;
     private int repetations;
-    private Long timestamp;
 
     public ExcerciseInput() {
     }
 
-    public ExcerciseInput(ExcercisesEnum name, int level, int series, int repetations, Long timestamp) {
+    public ExcerciseInput(ExcercisesEnum name, int level, int series, int repetations) {
         this.name = name;
         this.level = level;
         this.series = series;
         this.repetations = repetations;
-        this.timestamp = timestamp;
     }
 
     public ExcercisesEnum getName() {
@@ -56,13 +54,6 @@ public class ExcerciseInput {
         this.repetations = repetations;
     }
 
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,8 +65,7 @@ public class ExcerciseInput {
         if (level != that.level) return false;
         if (series != that.series) return false;
         if (repetations != that.repetations) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return timestamp != null ? timestamp.equals(that.timestamp) : that.timestamp == null;
+        return name == that.name;
     }
 
     @Override
@@ -84,18 +74,16 @@ public class ExcerciseInput {
         result = 31 * result + level;
         result = 31 * result + series;
         result = 31 * result + repetations;
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "ExcerciseInput{" +
-                "name='" + name + '\'' +
+                "name=" + name +
                 ", level=" + level +
                 ", series=" + series +
                 ", repetations=" + repetations +
-                ", timestamp=" + timestamp +
                 '}';
     }
 }
