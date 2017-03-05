@@ -1,11 +1,13 @@
 package sk.tomas.app.iam.model.output;
 
+import sk.tomas.app.iam.model.enums.ExcercisesEnum;
+
 /**
  * Created by tomas on 5.3.2017.
  */
 public class ExcerciseOutput {
 
-    private String name;
+    private ExcercisesEnum name;
     private int level;
     private int series;
     private int repetations;
@@ -14,7 +16,7 @@ public class ExcerciseOutput {
     public ExcerciseOutput() {
     }
 
-    public ExcerciseOutput(String name, int level, int series, int repetations, Long timestamp) {
+    public ExcerciseOutput(ExcercisesEnum name, int level, int series, int repetations, Long timestamp) {
         this.name = name;
         this.level = level;
         this.series = series;
@@ -22,11 +24,11 @@ public class ExcerciseOutput {
         this.timestamp = timestamp;
     }
 
-    public String getName() {
+    public ExcercisesEnum getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(ExcercisesEnum name) {
         this.name = name;
     }
 
