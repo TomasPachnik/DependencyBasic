@@ -1,4 +1,4 @@
-package sk.tomas.app.enums;
+package sk.tomas.app.iam.model.enums;
 
 /**
  * Created by tomas on 5.3.2017.
