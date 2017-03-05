@@ -2,11 +2,14 @@ package sk.tomas.app.iam.model.output;
 
 import sk.tomas.app.iam.model.enums.ExcercisesEnum;
 
+import java.util.UUID;
+
 /**
  * Created by tomas on 5.3.2017.
  */
 public class ExcerciseOutput {
 
+    private UUID uuid;
     private ExcercisesEnum name;
     private int level;
     private int series;
@@ -16,7 +19,8 @@ public class ExcerciseOutput {
     public ExcerciseOutput() {
     }
 
-    public ExcerciseOutput(ExcercisesEnum name, int level, int series, int repetations, Long timestamp) {
+    public ExcerciseOutput(UUID uuid, ExcercisesEnum name, int level, int series, int repetations, Long timestamp) {
+        this.uuid = uuid;
         this.name = name;
         this.level = level;
         this.series = series;
@@ -26,6 +30,14 @@ public class ExcerciseOutput {
 
     public ExcercisesEnum getName() {
         return name;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public void setName(ExcercisesEnum name) {
@@ -74,13 +86,15 @@ public class ExcerciseOutput {
         if (level != that.level) return false;
         if (series != that.series) return false;
         if (repetations != that.repetations) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (uuid != null ? !uuid.equals(that.uuid) : that.uuid != null) return false;
+        if (name != that.name) return false;
         return timestamp != null ? timestamp.equals(that.timestamp) : that.timestamp == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = uuid != null ? uuid.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + level;
         result = 31 * result + series;
         result = 31 * result + repetations;
@@ -91,7 +105,8 @@ public class ExcerciseOutput {
     @Override
     public String toString() {
         return "ExcerciseOutput{" +
-                "name='" + name + '\'' +
+                "uuid=" + uuid +
+                ", name=" + name +
                 ", level=" + level +
                 ", series=" + series +
                 ", repetations=" + repetations +
